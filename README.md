@@ -10,6 +10,9 @@ PixaVista is a beautiful wallpaper app that allows you to discover and set stunn
 - **Save to Gallery:** Save wallpapers to your device's gallery for offline access or sharing with friends.
 - **Customization Options:** Adjust wallpaper settings such as cropping, scaling, and more to fit your device's screen perfectly.
 
+## Screenshots
+-
+
 ## Installation
 
 To get started with PixaVista, follow these steps:
@@ -27,11 +30,11 @@ To get started with PixaVista, follow these steps:
 Additionally, if not already present, add the following attribute to the `application` tag to enable legacy external storage access:
 ```xml
 android:requestLegacyExternalStorage="true"
-   ```
+```
 
 3. **Run the App:** Navigate to the project directory and run the app on your preferred device or simulator using Flutter.
    ```
-   cd pixavista
+   cd path/to/your/PixaVista
    flutter run
    ```
 
@@ -49,8 +52,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 Have questions or feedback? Feel free to reach out:
 
-- Email: your-email@example.com
-- Twitter: [@your-twitter-handle](https://twitter.com/your-twitter-handle)
-- GitHub: [Your GitHub Profile](https://github.com/your-username)
+- Email: shinaskoya123@gmail.com
+- GitHub: https://github.com/ShinasKoya00
 
 Thank you for using PixaVista! Enjoy exploring and elevating your screen style!
