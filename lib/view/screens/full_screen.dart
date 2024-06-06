@@ -1,52 +1,69 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 
-class FullScreen extends StatelessWidget {
+class FullScreen extends StatefulWidget {
   final String imageUrl;
 
-  FullScreen({super.key, required this.imageUrl});
+  const FullScreen({super.key, required this.imageUrl});
 
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  @override
+  State<FullScreen> createState() => _FullScreenState();
+}
 
-  Future<void> setWallpaperFromFile(String wallpaperUrl, BuildContext context) async {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("Download Starting..."),
-    ));
-
-//     try {
-// // saving the image
-//       var imageId = await ImageDownloader.downloadImage(wallpaperUrl);
-//       if (imageId == null) {
-//         return;
-//       }
-//       // below is the method to obtain saved info of saved image
-//       var fileName = await ImageDownloader.findName(imageId);
-//       var path = await ImageDownloader.findPath(imageId);
-//       var size = await ImageDownloader.findByteSize(imageId);
-//       var mimeType = await ImageDownloader.findMimeType(imageId);
-//       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Download Successful")));
-//       print("IMAGE DOWNLOADED");
-//     } on PlatformException catch (error) {
-//       print(error);
-//       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error Occured - $error")));
-//     }
-  }
-
+class _FullScreenState extends State<FullScreen> {
+  // final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
+        padding: EdgeInsets.only(bottom: 20),
         height: height,
         width: width,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(imageUrl),
+            image: NetworkImage(widget.imageUrl),
             fit: BoxFit.cover,
           ),
         ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () {
+                _save();
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: 70,
+                width: 200,
+                color: Colors.white24,
+                child: Text("Set Wallpaper"),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("cancel"),
+            )
+          ],
+        ),
       ),
     );
+  }
+
+  _save() async {
+    var response = await Dio().get(widget.imageUrl, options: Options(responseType: ResponseType.bytes));
+    final result = await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
+    print(result);
+    Navigator.pop(context);
   }
 }
