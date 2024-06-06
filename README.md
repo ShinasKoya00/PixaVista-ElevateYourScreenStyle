@@ -19,25 +19,25 @@ PixaVista is a beautiful wallpaper app that allows you to discover and set stunn
 To get started with PixaVista, follow these steps:
 
 1. **Clone the Repository:** Clone this GitHub repository to your local machine using the following command:
-   ```
+```
    git clone https://github.com/your-username/pixavista.git
-   ```
+```
 
 2. **Update Android Manifest:** Open the `android/app/src/main/AndroidManifest.xml` file and ensure it includes the following permission for accessing external storage (required for saving wallpapers):
-    ```xml
+```xml
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    ```
+```
 
 Additionally, if not already present, add the following attribute to the `application` tag to enable legacy external storage access:
-   ```xml
+```xml
    android:requestLegacyExternalStorage="true"
-   ```
+```
 
 3. **Run the App:** Navigate to the project directory and run the app on your preferred device or simulator using Flutter.
-   ```
+```
    cd path/to/your/PixaVista
    flutter run
-   ```
+```
 
 4. **Explore and Enjoy:** Once the app is running, explore the collection of wallpapers, set your favorites, and personalize your device's screen style!
 
