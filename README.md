@@ -6,6 +6,7 @@ PixaVista is a beautiful wallpaper app that allows you to discover and set stunn
 
 - **Vast Collection:** Explore a diverse collection of wallpapers, curated to cater to various tastes and preferences.
 - **Search Functionality:** Easily find wallpapers by searching for specific keywords or categories.
+- **Predefined Categories:** Discover wallpapers curated for various themes and moods.
 - **Set as Wallpaper:** Quickly set your favorite wallpapers as your device's home or lock screen background with just a tap.
 - **Save to Gallery:** Save wallpapers to your device's gallery for offline access or sharing with friends.
 - **Customization Options:** Adjust wallpaper settings such as cropping, scaling, and more to fit your device's screen perfectly.
