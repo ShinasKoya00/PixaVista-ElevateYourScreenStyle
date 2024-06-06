@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:pixa_vista/constants/colors.dart';
 import 'package:pixa_vista/controller/api_operations.dart';
 import 'package:pixa_vista/model/photos_model.dart';
+import 'package:pixa_vista/view/widgets/category_header.dart';
 
 import 'package:pixa_vista/view/widgets/custom_app_bar.dart';
 import 'package:pixa_vista/view/widgets/wallpaper_container.dart';
@@ -60,7 +62,10 @@ class _SearchPageState extends State<SearchPage> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: MyColors.backgroundColor,
       appBar: AppBar(
+        backgroundColor: MyColors.backgroundColor,
+        automaticallyImplyLeading: false,
         title: const CustomAppBar(),
         centerTitle: true,
       ),
@@ -109,10 +114,24 @@ class _SearchPageState extends State<SearchPage> {
                   ],
                 ),
               ),
+              if (searchResults.isNotEmpty)
+                CategoryHeader(
+                  width: width,
+                  headerQuery: widget.query,
+                  headerBackgroundImage: searchResults[5].imgSrc,
+                )
+              else
+                Container(
+                  height: 150,
+                  width: width,
+                  decoration: BoxDecoration(
+                    color: MyColors.lightGreen1,
+                    borderRadius: BorderRadius.circular(15),
+                  ), // Placeholder color or image
+                ),
 
               // content grid view
               Container(
-                margin: EdgeInsets.only(top: 15),
                 height: height - 200,
                 child: GridView.builder(
                   physics: BouncingScrollPhysics(),

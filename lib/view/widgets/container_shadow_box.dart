@@ -58,21 +58,21 @@ class ContainerShadowBox extends StatelessWidget {
         ),
         child: imageAsset != null
             ? Image.asset(
-          imageAsset!,
-          scale: 5.5,
-        )
+                imageAsset!,
+                scale: 5.5,
+              )
             : imageNetwork != null
-            ? Image.network(
-          imageNetwork!,
-
-          scale:0.1,
-        )
-            : text != null
-            ? Text(
-          text!,
-          style: TextStyle(color: textColor, fontSize: textSize),
-        )
-            : child,
+                ? Image.network(
+                    imageNetwork!,
+                    fit: BoxFit.cover,
+                    scale: 0.1,
+                  )
+                : text != null
+                    ? Text(
+                        text!,
+                        style: TextStyle(color: textColor, fontSize: textSize),
+                      )
+                    : child,
       ),
     );
   }

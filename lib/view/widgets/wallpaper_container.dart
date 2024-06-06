@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pixa_vista/constants/colors.dart';
 import 'package:pixa_vista/view/screens/full_screen.dart';
 
 class WallpaperContainer extends StatelessWidget {
@@ -21,16 +22,16 @@ class WallpaperContainer extends StatelessWidget {
             ),
           );
         },
-        child: Hero(
-          tag: imgSrc,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.white,
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.network(fit: BoxFit.fitHeight, imgSrc),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: MyColors.lightGreen1,
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              imgSrc,
+              fit: BoxFit.fitHeight,
             ),
           ),
         ),

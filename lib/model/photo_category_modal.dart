@@ -2,11 +2,11 @@ List photoCategoryList = [
   {
     "heading": "Cars",
     "backGroundImage":
-        "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/3311574/pexels-photo-3311574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     "heading": "Bikes",
-    "backGroundImage": "https://images.pexels.com/photos/819805/pexels-photo-819805.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "backGroundImage": "https://images.pexels.com/photos/19311160/pexels-photo-19311160/free-photo-of-photo-of-a-red-bmw-s1000-rr-motorcycle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     "heading": "Forest",

@@ -1,7 +1,8 @@
-import 'package:dio/dio.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:gallery_saver_updated/gallery_saver.dart';
+import 'package:pixa_vista/constants/colors.dart';
 
 class FullScreen extends StatefulWidget {
   final String imageUrl;
@@ -13,57 +14,80 @@ class FullScreen extends StatefulWidget {
 }
 
 class _FullScreenState extends State<FullScreen> {
-  // final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.only(bottom: 20),
-        height: height,
-        width: width,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(widget.imageUrl),
-            fit: BoxFit.cover,
+      backgroundColor: MyColors.backgroundColor,
+      body: Hero(
+        tag: widget.imageUrl,
+        child: Container(
+          height: height,
+          width: width,
+          padding: EdgeInsets.only(bottom: 30),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(widget.imageUrl),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: () {
-                _save();
-              },
-              child: Container(
-                alignment: Alignment.center,
-                height: 70,
-                width: 200,
-                color: Colors.white24,
-                child: Text("Set Wallpaper"),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  downloadImage();
+                },
+                child: Container(
+                  height: 60,
+                  width: width / 1.5,
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(vertical: 7, horizontal: 5),
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [Color(0x56ffffff), Color(0x20ffffff)]),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.white54, width: 1)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        "Set Wallpaper",
+                        style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
+                      Text(
+                        "Image will be saved in the gallery",
+                        style: TextStyle(fontSize: 12.0, color: Colors.white54),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("cancel"),
-            ),
-          ],
+              SizedBox(height: 15),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(color: Colors.white, fontSize: 20.0),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
-  _save() async {
-    var response = await Dio().get(widget.imageUrl, options: Options(responseType: ResponseType.bytes));
-    final result = await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
-    print(result);
-    Navigator.pop(context);
+  void downloadImage() async {
+    try {
+      await GallerySaver.saveImage(widget.imageUrl).then((success) {
+        print("image saved");
+      });
+    } catch (e) {
+      log('downloadImageE: $e');
+    }
   }
 }

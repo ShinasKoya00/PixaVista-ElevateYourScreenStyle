@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pixa_vista/constants/colors.dart';
 
 class CategoryHeader extends StatelessWidget {
   final String headerQuery;
@@ -6,7 +7,9 @@ class CategoryHeader extends StatelessWidget {
 
   const CategoryHeader({
     super.key,
-    required this.width, required this.headerQuery, required this.headerBackgroundImage,
+    required this.width,
+    required this.headerQuery,
+    required this.headerBackgroundImage,
   });
 
   final double width;
@@ -18,11 +21,18 @@ class CategoryHeader extends StatelessWidget {
       width: width,
       margin: EdgeInsets.symmetric(vertical: 15),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: MyColors.lightGreen1,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade600,
+            offset: const Offset(0.0, 12.0),
+            blurRadius: 10.0,
+            spreadRadius: -5.0,
+          ),
+        ],
         borderRadius: BorderRadius.circular(15),
         image: DecorationImage(
-          image: NetworkImage(
-              headerBackgroundImage),
+          image: NetworkImage(headerBackgroundImage),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             Colors.black.withOpacity(0.4),
@@ -30,16 +40,25 @@ class CategoryHeader extends StatelessWidget {
           ),
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Stack(
         children: [
-          Text(
-            "category",
-            style: TextStyle(fontSize: 25, color: Colors.white),
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+                Colors.black54,
+                Colors.transparent,
+                Colors.black54,
+              ], begin: Alignment.centerLeft, end: Alignment.centerRight),
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
-          Text(
-            headerQuery,
-            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
+          Container(
+            width: width,
+            alignment: Alignment.center,
+            child: Text(
+              headerQuery,
+              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.white),
+            ),
           ),
         ],
       ),

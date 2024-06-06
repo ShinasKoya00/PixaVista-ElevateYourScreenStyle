@@ -9,7 +9,7 @@ class PhotosModel {
 
   static PhotosModel fromApiToApp(Map<String, dynamic> photoMap) {
     return PhotosModel(
-      imgSrc: (photoMap["src"])["portrait"],
+      imgSrc: (photoMap["src"])["original"],
       photographerName: photoMap["photographer"],
     );
   }

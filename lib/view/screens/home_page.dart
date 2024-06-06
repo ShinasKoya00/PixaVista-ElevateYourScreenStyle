@@ -2,14 +2,14 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:pixa_vista/constants/colors.dart';
 import 'package:pixa_vista/controller/api_operations.dart';
 import 'package:pixa_vista/model/photo_category_modal.dart';
 import 'package:pixa_vista/model/photos_model.dart';
 import 'package:pixa_vista/view/screens/search_page.dart';
-import 'package:pixa_vista/view/widgets/category_scroller.dart';
+import 'package:pixa_vista/view/widgets/category_container.dart';
 import 'package:pixa_vista/view/widgets/custom_app_bar.dart';
 import 'package:pixa_vista/view/widgets/wallpaper_container.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   List<PhotosModel> trendingWallpaperList = []; //local variable initialization
   TextEditingController searchController = TextEditingController();
 
-  void searchRecipe(String query) {
+  void searchWallpaper(String query) {
     query = query.trim();
     if (query.isEmpty) {
       log("Blank search");
@@ -58,12 +58,13 @@ class _HomePageState extends State<HomePage> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: MyColors.backgroundColor,
       appBar: AppBar(
+        backgroundColor: MyColors.backgroundColor,
         title: const CustomAppBar(),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        // physics: NeverScrollableScrollPhysics(),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
@@ -92,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                                 border: InputBorder.none,
                               ),
                               onSubmitted: (inputValue) {
-                                searchRecipe(inputValue);
+                                searchWallpaper(inputValue);
                               },
                             ),
                           ),
@@ -112,14 +113,14 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 15, top: 5),
-                height: 50,
+                height: height - 200,
                 width: width,
                 child: ListView.builder(
                   physics: BouncingScrollPhysics(),
                   shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
                   itemCount: photoCategoryList.length,
-                  itemBuilder: (context, index) => CategoryScroller(
+                  itemBuilder: (context, index) => CategoryContainer(
+                    height: height,
                     width: width,
                     index: index,
                   ),
@@ -127,22 +128,22 @@ class _HomePageState extends State<HomePage> {
               ),
 
               // content grid view
-              SizedBox(
-                height: height - 260,
-                child: GridView.builder(
-                  physics: BouncingScrollPhysics(),
-                  itemCount: trendingWallpaperList.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 15,
-                    mainAxisExtent: 350,
-                  ),
-                  itemBuilder: (context, index) => WallpaperContainer(
-                    imgSrc: trendingWallpaperList[index].imgSrc,
-                  ),
-                ),
-              ),
+              // SizedBox(
+              //   height: height - 260,
+              //   child: GridView.builder(
+              //     physics: BouncingScrollPhysics(),
+              //     itemCount: trendingWallpaperList.length,
+              //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //       crossAxisCount: 2,
+              //       crossAxisSpacing: 10,
+              //       mainAxisSpacing: 15,
+              //       mainAxisExtent: 350,
+              //     ),
+              //     itemBuilder: (context, index) => WallpaperContainer(
+              //       imgSrc: trendingWallpaperList[index].imgSrc,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
