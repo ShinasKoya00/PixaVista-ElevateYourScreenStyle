@@ -24,9 +24,9 @@ To get started with PixaVista, follow these steps:
    ```
 
 2. **Update Android Manifest:** Open the `android/app/src/main/AndroidManifest.xml` file and ensure it includes the following permission for accessing external storage (required for saving wallpapers):
-   ```xml
-   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-   ```
+    ```xml
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    ```
 
 Additionally, if not already present, add the following attribute to the `application` tag to enable legacy external storage access:
    ```xml
