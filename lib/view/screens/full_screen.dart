@@ -83,8 +83,8 @@ class _FullScreenState extends State<FullScreen> {
 
   void downloadImage() async {
     try {
-      await GallerySaver.saveImage(widget.imageUrl).then((success) {
-        print("image saved");
+      await GallerySaver.saveImage(widget.imageUrl, albumName: "PixaVista").then((success) {
+        log("image saved");
       });
     } catch (e) {
       log('downloadImageE: $e');
