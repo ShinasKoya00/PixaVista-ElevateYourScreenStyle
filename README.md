@@ -20,7 +20,7 @@ To get started with PixaVista, follow these steps:
 
 1. **Clone the Repository:** Clone this GitHub repository to your local machine using the following command:
 ```
-   git clone https://github.com/your-username/pixavista.git
+   git clone https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle.git
 ```
 
 2. **Update Android Manifest:** Open the `android/app/src/main/AndroidManifest.xml` file and ensure it includes the following permission for accessing external storage (required for saving wallpapers):
