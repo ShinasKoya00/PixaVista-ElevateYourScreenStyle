@@ -1,16 +1,56 @@
-# pixa_vista
+# PixaVista - Elevate Your Screen Style
 
-A new Flutter project.
+PixaVista is a beautiful wallpaper app that allows you to discover and set stunning wallpapers for your device. With a vast collection of high-quality images, you can easily personalize your device's home and lock screens to match your style and mood.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **Vast Collection:** Explore a diverse collection of wallpapers, curated to cater to various tastes and preferences.
+- **Search Functionality:** Easily find wallpapers by searching for specific keywords or categories.
+- **Set as Wallpaper:** Quickly set your favorite wallpapers as your device's home or lock screen background with just a tap.
+- **Save to Gallery:** Save wallpapers to your device's gallery for offline access or sharing with friends.
+- **Customization Options:** Adjust wallpaper settings such as cropping, scaling, and more to fit your device's screen perfectly.
 
-A few resources to get you started if this is your first Flutter project:
+## Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+To get started with PixaVista, follow these steps:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. **Clone the Repository:** Clone this GitHub repository to your local machine using the following command:
+   ```
+   git clone https://github.com/your-username/pixavista.git
+   ```
+
+2. **Update Android Manifest:** Open the `android/app/src/main/AndroidManifest.xml` file and ensure it includes the following permission for accessing external storage (required for saving wallpapers):
+   ```xml
+  // <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+   ```
+
+   Additionally, if not already present, add the following attribute to the `application` tag to enable legacy external storage access:
+   ```xml
+  // android:requestLegacyExternalStorage="true"
+   ```
+
+3. **Run the App:** Navigate to the project directory and run the app on your preferred device or simulator using Flutter.
+   ```
+   cd pixavista
+   flutter run
+   ```
+
+4. **Explore and Enjoy:** Once the app is running, explore the collection of wallpapers, set your favorites, and personalize your device's screen style!
+
+## Contributing
+
+Contributions are welcome! If you encounter any issues or have suggestions for improvements, feel free to [open an issue](https://github.com/your-username/pixavista/issues) or [submit a pull request](https://github.com/your-username/pixavista/pulls). We appreciate your feedback and contributions to make PixaVista even better!
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+Have questions or feedback? Feel free to reach out:
+
+- Email: your-email@example.com
+- Twitter: [@your-twitter-handle](https://twitter.com/your-twitter-handle)
+- GitHub: [Your GitHub Profile](https://github.com/your-username)
+
+Thank you for using PixaVista! Enjoy exploring and elevating your screen style!
