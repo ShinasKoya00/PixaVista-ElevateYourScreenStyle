@@ -3,12 +3,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:pixa_vista/constants/colors.dart';
+import 'package:pixa_vista/constants/error_enum.dart';
 import 'package:pixa_vista/controller/api_operations.dart';
 import 'package:pixa_vista/model/photo_category_modal.dart';
 import 'package:pixa_vista/model/photos_model.dart';
 import 'package:pixa_vista/view/screens/search_page.dart';
 import 'package:pixa_vista/view/widgets/category_container.dart';
 import 'package:pixa_vista/view/widgets/custom_app_bar.dart';
+import 'package:pixa_vista/view/widgets/error_screen.dart';
 import 'package:pixa_vista/view/widgets/wallpaper_container.dart';
 
 class HomePage extends StatefulWidget {
@@ -58,6 +60,21 @@ class _HomePageState extends State<HomePage> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ErrorScreen(
+                        errorType: ErrorType.notFound404,
+                        notFound404GoBack: () {
+                          Navigator.pushReplacement(
+                              context, MaterialPageRoute(builder: (context) => HomePage()));
+                        },
+                      )));
+        },
+        child: Icon(Icons.add),
+      ),
       backgroundColor: MyColors.backgroundColor,
       appBar: AppBar(
         backgroundColor: MyColors.backgroundColor,
