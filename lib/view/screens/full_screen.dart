@@ -53,7 +53,7 @@ class _FullScreenState extends State<FullScreen> {
                 Navigator.pop(context);
               },
               child: Text("cancel"),
-            )
+            ),
           ],
         ),
       ),
