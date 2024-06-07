@@ -18,6 +18,29 @@ class FullScreen extends StatefulWidget {
 class _FullScreenState extends State<FullScreen> {
   bool _showBanner = false;
 
+  void downloadImage() async {
+    try {
+      await GallerySaver.saveImage(widget.imageUrl, albumName: "PixaVista").then((success) {
+        log("image saved");
+        if (mounted) {
+          setState(() {
+            _showBanner = true;
+          });
+
+          Timer(const Duration(milliseconds: 2000), () {
+            if (mounted) {
+              setState(() {
+                _showBanner = false;
+              });
+            }
+          });
+        }
+      });
+    } catch (error) {
+      log('downloadImageE: $error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -97,25 +120,6 @@ class _FullScreenState extends State<FullScreen> {
         ],
       ),
     );
-  }
-
-  void downloadImage() async {
-    try {
-      await GallerySaver.saveImage(widget.imageUrl, albumName: "PixaVista").then((success) {
-        log("image saved");
-        setState(() {
-          _showBanner = true;
-        });
-
-        Timer(const Duration(milliseconds: 1500), () {
-          setState(() {
-            _showBanner = false;
-          });
-        });
-      });
-    } catch (e) {
-      log('downloadImageE: $e');
-    }
   }
 }
 

@@ -49,7 +49,7 @@ class CategoryHeader extends StatelessWidget {
                 Colors.transparent,
                 Colors.black54,
               ], begin: Alignment.centerLeft, end: Alignment.centerRight),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(15),
             ),
           ),
           Container(
@@ -57,7 +57,11 @@ class CategoryHeader extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               headerQuery,
-              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
           ),
         ],

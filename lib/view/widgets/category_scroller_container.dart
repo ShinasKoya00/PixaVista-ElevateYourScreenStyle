@@ -3,13 +3,13 @@ import 'package:pixa_vista/constants/colors.dart';
 import 'package:pixa_vista/model/photo_category_modal.dart';
 import 'package:pixa_vista/view/screens/category_page.dart';
 
-class CategoryContainer extends StatelessWidget {
+class CategoryScrollerContainer extends StatelessWidget {
   final double height;
   final double width;
 
   final int index;
 
-  const CategoryContainer({
+  const CategoryScrollerContainer({
     super.key,
     required this.width,
     required this.index,
@@ -18,17 +18,13 @@ class CategoryContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery
-        .of(context)
-        .size
-        .width;
+    final width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    CategoryPage(
+                builder: (context) => CategoryPage(
                       query: photoCategoryList[index]["heading"],
                       headerBackgroundImage: photoCategoryList[index]["backGroundImage"],
                     )));

@@ -14,18 +14,9 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
-    // startTimer();
+
     super.initState();
   }
-
-  // startTimer() {
-  //   var duration = Duration(seconds: 5);
-  //   return Timer(duration, navigateToNextPage(widget.nextPage));
-  // }
-
-  // navigateToNextPage(Widget nextPage) {
-  //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => nextPage));
-  // }
 
   @override
   Widget build(BuildContext context) {

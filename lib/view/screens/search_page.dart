@@ -55,7 +55,6 @@ class _SearchPageState extends State<SearchPage> {
     }
   }
 
-
   getResults() async {
     try {
       searchResults = await ApiOperations.searchWallpaper(widget.query);
@@ -72,8 +71,8 @@ class _SearchPageState extends State<SearchPage> {
     }
   }
 
-  void _startTimer() {
-    const duration = Duration(seconds: 3);
+  void _startTimerForLoadingScreen() {
+    const duration = Duration(seconds: 10);
     _timer = Timer(duration, () {
       setState(() {
         isLoading = false;
@@ -84,13 +83,14 @@ class _SearchPageState extends State<SearchPage> {
   @override
   void initState() {
     getResults();
-    _startTimer();
+    _startTimerForLoadingScreen();
     super.initState();
   }
 
   @override
   void dispose() {
     _timer.cancel();
+
     super.dispose();
   }
 
@@ -144,7 +144,7 @@ class _SearchPageState extends State<SearchPage> {
                                           child: TextField(
                                             controller: searchController,
                                             decoration: InputDecoration(
-                                              hintText: "Search wallpaper here...",
+                                              hintText: "Here are your results for '${widget.query}'...",
                                               hintStyle: TextStyle(color: Colors.grey.shade400),
                                               border: InputBorder.none,
                                             ),
@@ -182,7 +182,7 @@ class _SearchPageState extends State<SearchPage> {
 
                             // content grid view
                             Container(
-                              height: height - 200,
+                              height: height - 360,
                               child: GridView.builder(
                                 physics: BouncingScrollPhysics(),
                                 itemCount: searchResults.length,

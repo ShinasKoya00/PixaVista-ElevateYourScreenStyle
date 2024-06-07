@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pixa_vista/constants/colors.dart';
 import 'package:pixa_vista/controller/api_operations.dart';
 import 'package:pixa_vista/model/photos_model.dart';
@@ -61,6 +62,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 headerBackgroundImage: widget.headerBackgroundImage,
               ),
               // content grid view
+
               SizedBox(
                 height: height - 200,
                 child: GridView.builder(
