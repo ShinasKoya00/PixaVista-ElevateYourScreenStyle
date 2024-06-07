@@ -46,6 +46,22 @@ Additionally, if not already present, add the following attribute to the `applic
 
 4. **Explore and Enjoy:** Once the app is running, explore the collection of wallpapers, set your favorites, and personalize your device's screen style!
 
+
+## Dependencies
+
+SavorySafari uses the following dependencies:
+
+- 'flutter': For building the app's UI.
+- 'http': For making API requests to fetch data.
+- 'webview_flutter': For displaying web content within the app.
+- 'cupertino_icons': For platform-specific icons on iOS.
+- 'google_fonts': For using custom fonts in the app.
+- 'gallery_saver_updated': For saving images to the device gallery.
+- 'awesome_snackbar_content': For displaying beautiful snackbars.
+- lottie': For rendering animations in the app.
+- flutter_svg': For rendering SVG images in the app.
+- flutter_staggered_grid_view': For displaying staggered grid layouts.
+
 ## Contributing
 
 Contributions are welcome! If you encounter any issues or have suggestions for improvements, feel free to [open an issue](https://github.com/your-username/pixavista/issues) or [submit a pull request](https://github.com/your-username/pixavista/pulls). We appreciate your feedback and contributions to make PixaVista even better!
