@@ -55,48 +55,28 @@ class _SearchPageState extends State<SearchPage> {
     }
   }
 
-  // getResults() async {
-  //   try {
-  //     searchResults = await ApiOperations.searchWallpaper(widget.query);
-  //     if (searchResults.isEmpty) {
-  //       await Future.delayed(Duration(seconds: 3));
-  //       if (mounted) {
-  //         setState(() {
-  //           noResultsFound = true;
-  //         });
-  //       }
-  //     } else {
-  //       if (mounted) {
-  //         setState(() {
-  //           noResultsFound = false;
-  //         });
-  //       }
-  //     }
-  //   } catch (error) {
-  //     if (mounted) {
-  //       setState(() {
-  //         isError = true;
-  //       });
-  //     }
-  //     log("Error fetching results : $error");
-  //   } finally {
-  //     if (mounted) {
-  //       setState(() {
-  //         isLoading = false;
-  //       });
-  //     }
-  //   }
-  // }
+
   getResults() async {
-    searchResults = await ApiOperations.searchWallpaper(widget.query);
-    setState(() {});
+    try {
+      searchResults = await ApiOperations.searchWallpaper(widget.query);
+      if (searchResults.isEmpty) {
+        setState(() {
+          noResultsFound = true;
+        });
+      }
+    } catch (error) {
+      setState(() {
+        isError = true;
+      });
+      log("Error fetching results : $error");
+    }
   }
 
   void _startTimer() {
     const duration = Duration(seconds: 3);
     _timer = Timer(duration, () {
       setState(() {
-        isLoading = false; // Set isLoading to false after 5 seconds
+        isLoading = false;
       });
     });
   }
@@ -127,100 +107,100 @@ class _SearchPageState extends State<SearchPage> {
         centerTitle: true,
       ),
       body: isLoading
-          ? LoadingScreen()
-          // : noResultsFound
-          //     ? ErrorScreen(
-          //         errorType: ErrorType.notFound404,
-          //         notFound404GoBack: () {
-          //           Navigator.pop(context);
-          //         },
-          //       )
-          //     : isError
-          //         ? Center(
-          //             child: Text("'An error occurred. Please try again later..."),
-          //           )
-          : SingleChildScrollView(
-              physics: NeverScrollableScrollPhysics(),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    SafeArea(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(top: 15),
-                            padding: const EdgeInsets.symmetric(horizontal: 12),
-                            height: 55,
-                            width: width - 40,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: TextField(
-                                    controller: searchController,
-                                    decoration: InputDecoration(
-                                      hintText: "Search wallpaper here...",
-                                      hintStyle: TextStyle(color: Colors.grey.shade400),
-                                      border: InputBorder.none,
+          ? const LoadingScreen()
+          : noResultsFound
+              ? ErrorScreen(
+                  errorType: ErrorType.notFound404,
+                  notFound404GoBack: () {
+                    Navigator.pop(context);
+                  },
+                )
+              : isError
+                  ? Center(
+                      child: Text("'An error occurred. Please try again later..."),
+                    )
+                  : SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          children: [
+                            SafeArea(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 15),
+                                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                                    height: 55,
+                                    width: width - 40,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(15),
                                     ),
-                                    onSubmitted: (inputValue) {
-                                      searchPhotoTextField(inputValue);
-                                    },
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: TextField(
+                                            controller: searchController,
+                                            decoration: InputDecoration(
+                                              hintText: "Search wallpaper here...",
+                                              hintStyle: TextStyle(color: Colors.grey.shade400),
+                                              border: InputBorder.none,
+                                            ),
+                                            onSubmitted: (inputValue) {
+                                              searchPhotoTextField(inputValue);
+                                            },
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.camera_alt_outlined,
+                                          size: 22,
+                                          color: Colors.grey.shade700,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Icon(
-                                  Icons.camera_alt_outlined,
-                                  size: 22,
-                                  color: Colors.grey.shade700,
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    if (searchResults.isNotEmpty)
-                      CategoryHeader(
-                        width: width,
-                        headerQuery: widget.query,
-                        headerBackgroundImage: searchResults[5].imgSrc,
-                      )
-                    else
-                      Container(
-                        height: 150,
-                        width: width,
-                        decoration: BoxDecoration(
-                          color: MyColors.lightGreen1,
-                          borderRadius: BorderRadius.circular(15),
-                        ), // Placeholder color or image
-                      ),
+                            if (searchResults.isNotEmpty)
+                              CategoryHeader(
+                                width: width,
+                                headerQuery: widget.query,
+                                headerBackgroundImage: searchResults[5].imgSrc,
+                              )
+                            else
+                              Container(
+                                height: 150,
+                                width: width,
+                                decoration: BoxDecoration(
+                                  color: MyColors.lightGreen1,
+                                  borderRadius: BorderRadius.circular(15),
+                                ), // Placeholder color or image
+                              ),
 
-                    // content grid view
-                    Container(
-                      height: height - 200,
-                      child: GridView.builder(
-                        physics: BouncingScrollPhysics(),
-                        itemCount: searchResults.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 15,
-                          mainAxisExtent: 350,
-                        ),
-                        itemBuilder: (context, index) => WallpaperContainer(
-                          imgSrc: searchResults[index].imgSrc,
+                            // content grid view
+                            Container(
+                              height: height - 200,
+                              child: GridView.builder(
+                                physics: BouncingScrollPhysics(),
+                                itemCount: searchResults.length,
+                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 15,
+                                  mainAxisExtent: 350,
+                                ),
+                                itemBuilder: (context, index) => WallpaperContainer(
+                                  imgSrc: searchResults[index].imgSrc,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
     );
   }
 }
