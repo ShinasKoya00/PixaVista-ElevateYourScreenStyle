@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
               context,
               MaterialPageRoute(
                   builder: (context) => ErrorScreen(
-                        errorType: ErrorType.notFound404,
+                        errorType: ErrorType.noInternet,
                         notFound404GoBack: () {
                           Navigator.pushReplacement(
                               context, MaterialPageRoute(builder: (context) => HomePage()));

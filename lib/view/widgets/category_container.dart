@@ -18,13 +18,17 @@ class CategoryContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final width = MediaQuery
+        .of(context)
+        .size
+        .width;
     return GestureDetector(
       onTap: () {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => CategoryPage(
+                builder: (context) =>
+                    CategoryPage(
                       query: photoCategoryList[index]["heading"],
                       headerBackgroundImage: photoCategoryList[index]["backGroundImage"],
                     )));
@@ -49,11 +53,13 @@ class CategoryContainer extends StatelessWidget {
           child: Stack(
             children: [
               Container(
+                height: height / 5,
+                width: width,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
-                    Colors.black54,
+                    MyColors.black70,
                     Colors.transparent,
-                    Colors.black54,
+                    MyColors.black70,
                   ], begin: Alignment.centerLeft, end: Alignment.centerRight),
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -64,7 +70,7 @@ class CategoryContainer extends StatelessWidget {
                 alignment: Alignment.bottomLeft,
                 padding: EdgeInsets.only(bottom: 15, left: 20),
                 decoration: BoxDecoration(
-                  color: Colors.black12,
+                  color: Colors.black26,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
