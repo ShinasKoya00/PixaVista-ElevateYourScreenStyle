@@ -14,7 +14,7 @@ PixaVista is a beautiful wallpaper app that allows you to discover and set stunn
 ## Screenshots
 - splash / loading screens:
   
-  <img src="https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle/blob/master/assets/application_snapshots/splash_screen_1.jpg" width="170" /> <img src="https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle/blob/master/assets/application_snapshots/splash_screen_2.jpg" width="170" /> <img src="https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle/blob/master/assets/application_snapshots/loading_screen_1.jpg" width="170" /> <img src="https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle/blob/master/assets/application_snapshots/loading_screen_2.jpg" width="170" />
+  <img src="https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle/blob/master/assets/application_snapshots/splash_screen_1.jpg" width="170" /> <img src="https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle/blob/master/assets/application_snapshots/splash_screen_2.jpg" width="170" /> <img src="https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle/blob/master/assets/application_snapshots/loading_screen_1.jpg" width="170" /> <img src="https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle/blob/master/assets/application_snapshots/loading_screen_2.jpg" width="170" /> <img src="https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle/blob/master/assets/application_snapshots/loading_screen_2.jpg" width="170" /> <img src="https://github.com/ShinasKoya00/PixaVista-ElevateYourScreenStyle/blob/master/assets/application_snapshots/loading_screen_2.jpg" width="170" />
 
 ## Installation
 
