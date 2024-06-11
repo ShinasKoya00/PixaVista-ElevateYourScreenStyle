@@ -53,14 +53,13 @@ SavorySafari uses the following dependencies:
 
 - 'flutter': For building the app's UI.
 - 'http': For making API requests to fetch data.
-- 'webview_flutter': For displaying web content within the app.
 - 'cupertino_icons': For platform-specific icons on iOS.
 - 'google_fonts': For using custom fonts in the app.
 - 'gallery_saver_updated': For saving images to the device gallery.
 - 'awesome_snackbar_content': For displaying beautiful snackbars.
 - lottie': For rendering animations in the app.
 - flutter_svg': For rendering SVG images in the app.
-- flutter_staggered_grid_view': For displaying staggered grid layouts.
+
 
 ## Contributing
 
