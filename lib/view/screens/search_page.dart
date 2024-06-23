@@ -6,11 +6,8 @@ import 'package:pixa_vista/constants/colors.dart';
 import 'package:pixa_vista/constants/error_enum.dart';
 import 'package:pixa_vista/controller/api_operations.dart';
 import 'package:pixa_vista/model/photos_model.dart';
-import 'package:pixa_vista/view/screens/home_page.dart';
 import 'package:pixa_vista/view/screens/loading_screen.dart';
-import 'package:pixa_vista/view/screens/splash_screen.dart';
 import 'package:pixa_vista/view/widgets/category_header.dart';
-
 import 'package:pixa_vista/view/widgets/custom_app_bar.dart';
 import 'package:pixa_vista/view/widgets/error_screen.dart';
 import 'package:pixa_vista/view/widgets/wallpaper_container.dart';
@@ -166,6 +163,7 @@ class _SearchPageState extends State<SearchPage> {
                             ),
                             if (searchResults.isNotEmpty)
                               CategoryHeader(
+                                height: height,
                                 width: width,
                                 headerQuery: widget.query,
                                 headerBackgroundImage: searchResults[5].imgSrc,

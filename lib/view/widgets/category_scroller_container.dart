@@ -18,7 +18,11 @@ class CategoryScrollerContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    var calculatedHeight = width / 5;
+
+    if (calculatedHeight < height / 5) {
+      calculatedHeight = height / 5;
+    }
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -30,7 +34,7 @@ class CategoryScrollerContainer extends StatelessWidget {
                     )));
       },
       child: Container(
-          height: height / 5,
+          height: calculatedHeight,
           width: width,
           margin: EdgeInsets.only(bottom: 20),
           decoration: BoxDecoration(
@@ -49,7 +53,7 @@ class CategoryScrollerContainer extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                height: height / 5,
+                height: calculatedHeight,
                 width: width,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
@@ -61,7 +65,7 @@ class CategoryScrollerContainer extends StatelessWidget {
                 ),
               ),
               Container(
-                height: height / 5,
+                height: calculatedHeight,
                 width: width,
                 alignment: Alignment.bottomLeft,
                 padding: EdgeInsets.only(bottom: 15, left: 20),

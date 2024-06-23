@@ -3,15 +3,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:pixa_vista/constants/colors.dart';
-import 'package:pixa_vista/constants/error_enum.dart';
 import 'package:pixa_vista/controller/api_operations.dart';
 import 'package:pixa_vista/model/photo_category_modal.dart';
 import 'package:pixa_vista/model/photos_model.dart';
 import 'package:pixa_vista/view/screens/search_page.dart';
 import 'package:pixa_vista/view/widgets/category_scroller_container.dart';
 import 'package:pixa_vista/view/widgets/custom_app_bar.dart';
-import 'package:pixa_vista/view/widgets/error_screen.dart';
-import 'package:pixa_vista/view/widgets/wallpaper_container.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -59,6 +56,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    var calculatedHeight = width / 5;
+
+    if (calculatedHeight < height / 5) {
+      calculatedHeight = height / 5;
+    }
     return Scaffold(
       backgroundColor: MyColors.backgroundColor,
       appBar: AppBar(
@@ -115,7 +117,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 15, top: 5),
-                height: height - 200,
+                height: height - 150,
                 width: width,
                 child: ListView.builder(
                   physics: BouncingScrollPhysics(),
@@ -128,24 +130,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-
-              // content grid view
-              // SizedBox(
-              //   height: height - 260,
-              //   child: GridView.builder(
-              //     physics: BouncingScrollPhysics(),
-              //     itemCount: trendingWallpaperList.length,
-              //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //       crossAxisCount: 2,
-              //       crossAxisSpacing: 10,
-              //       mainAxisSpacing: 15,
-              //       mainAxisExtent: 350,
-              //     ),
-              //     itemBuilder: (context, index) => WallpaperContainer(
-              //       imgSrc: trendingWallpaperList[index].imgSrc,
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),

@@ -1,8 +1,4 @@
-import 'dart:async';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:pixa_vista/constants/colors.dart';
 import 'package:pixa_vista/controller/api_operations.dart';
 import 'package:pixa_vista/model/photos_model.dart';
@@ -42,6 +38,11 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    var calculatedHeight = width / 5;
+
+    if (calculatedHeight < height / 5) {
+      calculatedHeight = height / 5;
+    }
     return Scaffold(
       backgroundColor: MyColors.backgroundColor,
       appBar: AppBar(
@@ -57,6 +58,7 @@ class _CategoryPageState extends State<CategoryPage> {
           child: Column(
             children: [
               CategoryHeader(
+                height: height,
                 width: width,
                 headerQuery: widget.query,
                 headerBackgroundImage: widget.headerBackgroundImage,

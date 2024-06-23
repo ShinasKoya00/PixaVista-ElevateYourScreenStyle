@@ -2,22 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:pixa_vista/constants/colors.dart';
 
 class CategoryHeader extends StatelessWidget {
+  final double height;
+  final double width;
   final String headerQuery;
   final String headerBackgroundImage;
 
   const CategoryHeader({
     super.key,
     required this.width,
+    required this.height,
     required this.headerQuery,
     required this.headerBackgroundImage,
   });
 
-  final double width;
-
   @override
   Widget build(BuildContext context) {
+    var calculatedHeight = width / 5;
+
+    if (calculatedHeight < height / 5) {
+      calculatedHeight = height / 5;
+    }
     return Container(
-      height: 150,
+      height: calculatedHeight,
       width: width,
       margin: EdgeInsets.symmetric(vertical: 15),
       decoration: BoxDecoration(
